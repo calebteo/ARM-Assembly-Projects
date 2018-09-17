@@ -1,0 +1,160 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             FirstProgram, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E3A0C0AC        LDR              r12, =0xAC
+    7 00000004 E1A0B00C        MOV              r11, r12
+    8 00000008         
+    9 00000008 E3A0A001        LDR              r10,  =0x1
+   10 0000000C E3A01000        LDR              r1,  =0x0
+   11 00000010 E3A02000        LDR              r2,  =0x0
+   12 00000014 E3A03000        LDR              r3,  =0x0
+   13 00000018 E3A04000        LDR              r4,  =0x0
+   14 0000001C         
+   15 0000001C E00B900A        AND              r9, r11, r10
+   16 00000020 E0891001        ADD              r1, r9, r1
+   17 00000024 E0892002        ADD              r2, r9, r2
+   18 00000028 E1A0B0AB        MOV              r11, r11, LSR #1
+   19 0000002C         
+   20 0000002C E00B900A        AND              r9, r11, r10
+   21 00000030 E0891001        ADD              r1, r9, r1
+   22 00000034 E0893003        ADD              r3, r9, r3
+   23 00000038 E1A0B0AB        MOV              r11, r11, LSR #1
+   24 0000003C         
+   25 0000003C E00B900A        AND              r9, r11, r10
+   26 00000040 E0892002        ADD              r2, r9, r2
+   27 00000044 E0893003        ADD              r3, r9, r3
+   28 00000048 E1A0B0AB        MOV              r11, r11, LSR #1
+   29 0000004C         
+   30 0000004C E00B900A        AND              r9, r11, r10
+   31 00000050 E0891001        ADD              r1, r9, r1
+   32 00000054 E0892002        ADD              r2, r9, r2
+   33 00000058 E0893003        ADD              r3, r9, r3
+   34 0000005C E1A0B0AB        MOV              r11, r11, LSR #1
+   35 00000060         
+   36 00000060 E00B900A        AND              r9, r11, r10
+   37 00000064 E0891001        ADD              r1, r9, r1
+   38 00000068 E0894004        ADD              r4, r9, r4
+   39 0000006C E1A0B0AB        MOV              r11, r11, LSR #1
+   40 00000070         
+   41 00000070 E00B900A        AND              r9, r11, r10
+   42 00000074 E0892002        ADD              r2, r9, r2
+   43 00000078 E0894004        ADD              r4, r9, r4
+   44 0000007C E1A0B0AB        MOV              r11, r11, LSR #1
+   45 00000080         
+   46 00000080 E00B900A        AND              r9, r11, r10
+   47 00000084 E0891001        ADD              r1, r9, r1
+   48 00000088 E0892002        ADD              r2, r9, r2
+   49 0000008C E0894004        ADD              r4, r9, r4
+   50 00000090 E1A0B0AB        MOV              r11, r11, LSR #1
+   51 00000094         
+   52 00000094 E00B900A        AND              r9, r11, r10
+   53 00000098 E0893003        ADD              r3, r9, r3
+   54 0000009C E0894004        ADD              r4, r9, r4
+   55 000000A0         
+   56 000000A0 E3A0500F        MOV              r5, #0xF
+   57 000000A4 E3A06007        MOV              r6, #0x7
+   58 000000A8 E3A07001        MOV              r7, #0x1
+   59 000000AC         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   60 000000AC         ;Separating 8 bits to 4, 3, 1
+   61 000000AC E005526C        AND              r5, r5, r12, ROR #4
+   62 000000B0 E00660EC        AND              r6, r6, r12, ROR #1
+   63 000000B4 E007700C        AND              r7, r7, r12
+   64 000000B8         
+   65 000000B8         ;Recombining bits to have 12 bits - 4 c3 3 c2 1 c1 c0
+   66 000000B8 E3A00000        MOV              r0, #0x0
+   67 000000BC E0850000        ADD              r0, r5, r0
+   68 000000C0 E1A00200        MOV              r0, r0, LSL #4
+   69 000000C4 E0860000        ADD              r0, r6, r0
+   70 000000C8 E1A00100        MOV              r0, r0, LSL #2
+   71 000000CC E0870000        ADD              r0, r7, r0
+   72 000000D0 E1A00100        MOV              r0, r0, LSL#2
+   73 000000D4         
+   74 000000D4         ;Determining the count as even or odd
+   75 000000D4 E2044001        AND              r4, r4, #0x1
+   76 000000D8 E2033001        AND              r3, r3, #0x1
+   77 000000DC E2022001        AND              r2, r2, #0x1
+   78 000000E0 E2011001        AND              r1, r1, #0x1
+   79 000000E4         
+   80 000000E4         ;Shifting bits to relevent slots
+   81 000000E4 E1A04384        MOV              r4, r4, LSL #7
+   82 000000E8 E1A03183        MOV              r3, r3, LSL #3
+   83 000000EC E1A02082        MOV              r2, r2, LSL #1
+   84 000000F0         
+   85 000000F0 E0240000        EOR              r0, r4, r0
+   86 000000F4 E0230000        EOR              r0, r3, r0
+   87 000000F8 E0220000        EOR              r0, r2, r0
+   88 000000FC E0210000        EOR              r0, r1, r0
+   89 00000100         
+   90 00000100         
+   91 00000100 EAFFFFFE 
+                       stop    B                stop
+   92 00000104         
+   93 00000104                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\f
+irstprogram.d -o.\firstprogram.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMS
+IS\Include -IC:\Keil_v5\ARM\Inc\Philips --predefine="__EVAL SETA 1" --predefine
+="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 516" --predefine="NO_C
+LOCK_SETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_INTVEC SE
+TA 1" --predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.\firstpr
+ogram.lst FirstProgram.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FirstProgram 00000000
+
+Symbol: FirstProgram
+   Definitions
+      At line 1 in file FirstProgram.s
+   Uses
+      None
+Comment: FirstProgram unused
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file FirstProgram.s
+   Uses
+      At line 3 in file FirstProgram.s
+Comment: start used once
+stop 00000100
+
+Symbol: stop
+   Definitions
+      At line 91 in file FirstProgram.s
+   Uses
+      At line 91 in file FirstProgram.s
+Comment: stop used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file FirstProgram.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+342 symbols in table

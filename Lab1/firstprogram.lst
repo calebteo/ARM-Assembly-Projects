@@ -1,0 +1,77 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             FirstProgram, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E3A01008        MOV              r1, #0x8
+    7 00000004 E0000191        MUL              r0, r1, r1
+    8 00000008 E3A02004        LDR              r2, =4
+    9 0000000C E0000092        MUL              r0, r2, r0
+   10 00000010 E3A02003        LDR              r2, =3
+   11 00000014 E0020291        MUL              r2, r1, r2
+   12 00000018 E0800002        ADD              r0, r0, r2
+   13 0000001C         
+   14 0000001C EAFFFFFE 
+                       stop    B                stop
+   15 00000020         
+   16 00000020                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\f
+irstprogram.d -o.\firstprogram.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMS
+IS\Include -IC:\Keil_v5\ARM\Inc\Philips --predefine="__EVAL SETA 1" --predefine
+="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 523" --predefine="NO_C
+LOCK_SETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_INTVEC SE
+TA 1" --predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.\firstpr
+ogram.lst FirstProgram.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FirstProgram 00000000
+
+Symbol: FirstProgram
+   Definitions
+      At line 1 in file FirstProgram.s
+   Uses
+      None
+Comment: FirstProgram unused
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file FirstProgram.s
+   Uses
+      At line 3 in file FirstProgram.s
+Comment: start used once
+stop 0000001C
+
+Symbol: stop
+   Definitions
+      At line 14 in file FirstProgram.s
+   Uses
+      At line 14 in file FirstProgram.s
+Comment: stop used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file FirstProgram.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+342 symbols in table

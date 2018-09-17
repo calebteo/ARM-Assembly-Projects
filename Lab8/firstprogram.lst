@@ -1,0 +1,133 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ValToHex, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E59F104C        LDR              r1, =0xFEED1234
+    7 00000004 E59F004C        LDR              r0, =0xA1000400
+    8 00000008 E3A04008        MOV              r4, #0x8
+    9 0000000C E3A0601C        LDR              r6, =28
+   10 00000010 E1A01671        ROR              r1, r6
+   11 00000014         
+   12 00000014 E3540000 
+                       for     CMP              r4, #0      ;For loop 8 counts
+   13 00000018 0A00000A        BEQ              endfor
+   14 0000001C E201200F        AND              r2, r1, #0xF ;Isolate the 4 LSB
+                                                            
+   15 00000020         
+   16 00000020 E3520009        CMP              r2, #0x9    ;if Byte > 9
+   17 00000024 3A000001        BLO              notLetter   ;Bype < 9
+   18 00000028 E3A03037        MOV              r3, #0x37   ;Convertor number f
+                                                            or letters
+   19 0000002C EA000000        B                endif1
+   20 00000030         notLetter
+   21 00000030 E3A03030        MOV              r3, #0x30   ;Convertor number f
+                                                            or numbers
+   22 00000034         endif1
+   23 00000034 E0822003        ADD              r2, r3
+   24 00000038 E4C02001        STRB             r2, [r0], #1 ;Store
+   25 0000003C E2544001        SUBS             r4, r4, #1  ;Count - 1
+   26 00000040 E1A01671        ROR              r1, r6      ;Rotate to desired 
+                                                            byte
+   27 00000044 EAFFFFF2        B                for
+   28 00000048         endfor
+   29 00000048 E3A02000        MOV              r2, #0x0
+   30 0000004C E5C02000        STRB             r2, [r0]
+   31 00000050 EAFFFFFE 
+                       stop    B                stop
+   32 00000054         
+   33 00000054                 END
+              FEED1234 
+              A1000400 
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\f
+irstprogram.d -o.\firstprogram.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMS
+IS\Include -IC:\Keil_v5\ARM\Inc\Philips --predefine="__EVAL SETA 1" --predefine
+="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 516" --predefine="NO_C
+LOCK_SETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_INTVEC SE
+TA 1" --predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.\firstpr
+ogram.lst FirstProgram.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ValToHex 00000000
+
+Symbol: ValToHex
+   Definitions
+      At line 1 in file FirstProgram.s
+   Uses
+      None
+Comment: ValToHex unused
+endfor 00000048
+
+Symbol: endfor
+   Definitions
+      At line 28 in file FirstProgram.s
+   Uses
+      At line 13 in file FirstProgram.s
+Comment: endfor used once
+endif1 00000034
+
+Symbol: endif1
+   Definitions
+      At line 22 in file FirstProgram.s
+   Uses
+      At line 19 in file FirstProgram.s
+Comment: endif1 used once
+for 00000014
+
+Symbol: for
+   Definitions
+      At line 12 in file FirstProgram.s
+   Uses
+      At line 27 in file FirstProgram.s
+Comment: for used once
+notLetter 00000030
+
+Symbol: notLetter
+   Definitions
+      At line 20 in file FirstProgram.s
+   Uses
+      At line 17 in file FirstProgram.s
+Comment: notLetter used once
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file FirstProgram.s
+   Uses
+      At line 3 in file FirstProgram.s
+Comment: start used once
+stop 00000050
+
+Symbol: stop
+   Definitions
+      At line 31 in file FirstProgram.s
+   Uses
+      At line 31 in file FirstProgram.s
+Comment: stop used once
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file FirstProgram.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+348 symbols in table

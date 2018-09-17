@@ -1,0 +1,269 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Hamming, CODE, READONLY
+    2 00000000                 IMPORT           main
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000         start
+    6 00000000 E3A010AC        LDR              r1, =0xAC
+    7 00000004 E1A0C001        MOV              r12, r1
+    8 00000008         
+    9 00000008 E20C405B        AND              r4, r12, #0x5B
+   10 0000000C E3A01001        LDR              r1,  =0x1
+   11 00000010 E3A02000        LDR              r2,  =0x0
+   12 00000014 E3A03000        LDR              r3,  =0x0
+   13 00000018         
+   14 00000018 E0042001        AND              r2, r4, r1
+   15 0000001C E0833002        ADD              r3, r3, r2
+   16 00000020 E1A040A4        MOV              r4, r4, LSR #1
+   17 00000024         
+   18 00000024 E0042001        AND              r2, r4, r1
+   19 00000028 E0833002        ADD              r3, r3, r2
+   20 0000002C E1A040A4        MOV              r4, r4, LSR #1
+   21 00000030         
+   22 00000030 E0042001        AND              r2, r4, r1
+   23 00000034 E0833002        ADD              r3, r3, r2
+   24 00000038 E1A040A4        MOV              r4, r4, LSR #1
+   25 0000003C         
+   26 0000003C E0042001        AND              r2, r4, r1
+   27 00000040 E0833002        ADD              r3, r3, r2
+   28 00000044 E1A040A4        MOV              r4, r4, LSR #1
+   29 00000048         
+   30 00000048 E0042001        AND              r2, r4, r1
+   31 0000004C E0833002        ADD              r3, r3, r2
+   32 00000050 E1A040A4        MOV              r4, r4, LSR #1
+   33 00000054         
+   34 00000054 E0042001        AND              r2, r4, r1
+   35 00000058 E0833002        ADD              r3, r3, r2
+   36 0000005C E1A040A4        MOV              r4, r4, LSR #1
+   37 00000060         
+   38 00000060 E0042001        AND              r2, r4, r1
+   39 00000064 E0833002        ADD              r3, r3, r2
+   40 00000068 E1A040A4        MOV              r4, r4, LSR #1
+   41 0000006C         
+   42 0000006C E0042001        AND              r2, r4, r1
+   43 00000070 E0833002        ADD              r3, r3, r2
+   44 00000074         
+   45 00000074 E2038001        AND              r8, r3, #0x1 ;r8 has c0
+   46 00000078         
+   47 00000078         
+   48 00000078 E20C50AD        AND              r5, r12, #0xAD
+   49 0000007C E3A01001        LDR              r1,  =0x1
+   50 00000080 E3A02000        LDR              r2,  =0x0
+   51 00000084 E3A03000        LDR              r3,  =0x0
+   52 00000088         
+   53 00000088 E0052001        AND              r2, r5, r1
+   54 0000008C E0833002        ADD              r3, r3, r2
+   55 00000090 E1A050A5        MOV              r5, r5, LSR #1
+   56 00000094         
+   57 00000094 E0052001        AND              r2, r5, r1
+   58 00000098 E0833002        ADD              r3, r3, r2
+   59 0000009C E1A050A5        MOV              r5, r5, LSR #1
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   60 000000A0         
+   61 000000A0 E0052001        AND              r2, r5, r1
+   62 000000A4 E0833002        ADD              r3, r3, r2
+   63 000000A8 E1A050A5        MOV              r5, r5, LSR #1
+   64 000000AC         
+   65 000000AC E0052001        AND              r2, r5, r1
+   66 000000B0 E0833002        ADD              r3, r3, r2
+   67 000000B4 E1A050A5        MOV              r5, r5, LSR #1
+   68 000000B8         
+   69 000000B8 E0052001        AND              r2, r5, r1
+   70 000000BC E0833002        ADD              r3, r3, r2
+   71 000000C0 E1A050A5        MOV              r5, r5, LSR #1
+   72 000000C4         
+   73 000000C4 E0052001        AND              r2, r5, r1
+   74 000000C8 E0833002        ADD              r3, r3, r2
+   75 000000CC E1A050A5        MOV              r5, r5, LSR #1
+   76 000000D0         
+   77 000000D0 E0052001        AND              r2, r5, r1
+   78 000000D4 E0833002        ADD              r3, r3, r2
+   79 000000D8 E1A050A5        MOV              r5, r5, LSR #1
+   80 000000DC         
+   81 000000DC E0052001        AND              r2, r5, r1
+   82 000000E0 E0833002        ADD              r3, r3, r2
+   83 000000E4         
+   84 000000E4 E2039001        AND              r9, r3, #0x1 ;r9 has c1
+   85 000000E8         
+   86 000000E8         
+   87 000000E8 E20C608E        AND              r6, r12, #0x8E
+   88 000000EC E3A01001        LDR              r1,  =0x1
+   89 000000F0 E3A02000        LDR              r2,  =0x0
+   90 000000F4 E3A03000        LDR              r3,  =0x0
+   91 000000F8         
+   92 000000F8 E0062001        AND              r2, r6, r1
+   93 000000FC E0833002        ADD              r3, r3, r2
+   94 00000100 E1A060A6        MOV              r6, r6, LSR #1
+   95 00000104         
+   96 00000104 E0062001        AND              r2, r6, r1
+   97 00000108 E0833002        ADD              r3, r3, r2
+   98 0000010C E1A060A6        MOV              r6, r6, LSR #1
+   99 00000110         
+  100 00000110 E0062001        AND              r2, r6, r1
+  101 00000114 E0833002        ADD              r3, r3, r2
+  102 00000118 E1A060A6        MOV              r6, r6, LSR #1
+  103 0000011C         
+  104 0000011C E0062001        AND              r2, r6, r1
+  105 00000120 E0833002        ADD              r3, r3, r2
+  106 00000124 E1A060A6        MOV              r6, r6, LSR #1
+  107 00000128         
+  108 00000128 E0062001        AND              r2, r6, r1
+  109 0000012C E0833002        ADD              r3, r3, r2
+  110 00000130 E1A060A6        MOV              r6, r6, LSR #1
+  111 00000134         
+  112 00000134 E0062001        AND              r2, r6, r1
+  113 00000138 E0833002        ADD              r3, r3, r2
+  114 0000013C E1A060A6        MOV              r6, r6, LSR #1
+  115 00000140         
+  116 00000140 E0062001        AND              r2, r6, r1
+  117 00000144 E0833002        ADD              r3, r3, r2
+  118 00000148 E1A060A6        MOV              r6, r6, LSR #1
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+  119 0000014C         
+  120 0000014C E0062001        AND              r2, r6, r1
+  121 00000150 E0833002        ADD              r3, r3, r2
+  122 00000154         
+  123 00000154 E203A001        AND              r10, r3, #0x1 ;r10 has c2
+  124 00000158         
+  125 00000158 E20C70F0        AND              r7, r12, #0xF0
+  126 0000015C E3A01001        LDR              r1,  =0x1
+  127 00000160 E3A02000        LDR              r2,  =0x0
+  128 00000164 E3A03000        LDR              r3,  =0x0
+  129 00000168         
+  130 00000168 E0072001        AND              r2, r7, r1
+  131 0000016C E0833002        ADD              r3, r3, r2
+  132 00000170 E1A070A7        MOV              r7, r7, LSR #1
+  133 00000174         
+  134 00000174 E0072001        AND              r2, r7, r1
+  135 00000178 E0833002        ADD              r3, r3, r2
+  136 0000017C E1A070A7        MOV              r7, r7, LSR #1
+  137 00000180         
+  138 00000180 E0072001        AND              r2, r7, r1
+  139 00000184 E0833002        ADD              r3, r3, r2
+  140 00000188 E1A070A7        MOV              r7, r7, LSR #1
+  141 0000018C         
+  142 0000018C E0072001        AND              r2, r7, r1
+  143 00000190 E0833002        ADD              r3, r3, r2
+  144 00000194 E1A070A7        MOV              r7, r7, LSR #1
+  145 00000198         
+  146 00000198 E0072001        AND              r2, r7, r1
+  147 0000019C E0833002        ADD              r3, r3, r2
+  148 000001A0 E1A070A7        MOV              r7, r7, LSR #1
+  149 000001A4         
+  150 000001A4 E0072001        AND              r2, r7, r1
+  151 000001A8 E0833002        ADD              r3, r3, r2
+  152 000001AC E1A070A7        MOV              r7, r7, LSR #1
+  153 000001B0         
+  154 000001B0 E0072001        AND              r2, r7, r1
+  155 000001B4 E0833002        ADD              r3, r3, r2
+  156 000001B8 E1A070A7        MOV              r7, r7, LSR #1
+  157 000001BC         
+  158 000001BC E0072001        AND              r2, r7, r1
+  159 000001C0 E0833002        ADD              r3, r3, r2
+  160 000001C4         
+  161 000001C4 E203B001        AND              r11, r3, #0x1 ;r11 has c3
+  162 000001C8         
+  163 000001C8 E3A0500F        MOV              r5, #0xF
+  164 000001CC E3A06007        MOV              r6, #0x7
+  165 000001D0 E3A07001        MOV              r7, #0x1
+  166 000001D4         
+  167 000001D4 E005226C        AND              r2, r5, r12, ROR #4
+  168 000001D8 E00630EC        AND              r3, r6, r12, ROR #1
+  169 000001DC E007400C        AND              r4, r7, r12
+  170 000001E0         
+  171 000001E0 E3A00000        MOV              r0, #0x0
+  172 000001E4 E0820000        ADD              r0, r2, r0
+  173 000001E8 E1A00200        MOV              r0, r0, LSL #4
+  174 000001EC E0830000        ADD              r0, r3, r0
+  175 000001F0 E1A00100        MOV              r0, r0, LSL #2
+  176 000001F4 E0840000        ADD              r0, r4, r0
+  177 000001F8 E1A00100        MOV              r0, r0, LSL#2
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+  178 000001FC         
+  179 000001FC E1A0B38B        MOV              r11, r11, LSL #7
+  180 00000200 E1A0A18A        MOV              r10, r10, LSL #3
+  181 00000204 E1A09089        MOV              r9, r9, LSL #1
+  182 00000208         
+  183 00000208 E02B0000        EOR              r0, r11, r0
+  184 0000020C E02A0000        EOR              r0, r10, r0
+  185 00000210 E0290000        EOR              r0, r9, r0
+  186 00000214 E0280000        EOR              r0, r8, r0
+  187 00000218         
+  188 00000218 EAFFFFFE 
+                       stop    B                stop
+  189 0000021C         
+  190 0000021C                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\f
+irstprogram.d -o.\firstprogram.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMS
+IS\Include -IC:\Keil_v5\ARM\Inc\Philips --predefine="__EVAL SETA 1" --predefine
+="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 516" --predefine="NO_C
+LOCK_SETUP SETA 1" --predefine="NO_EMC_SETUP SETA 1" --predefine="RAM_INTVEC SE
+TA 1" --predefine="RAM_MODE SETA 1" --predefine="REMAP SETA 1" --list=.\firstpr
+ogram.lst FirstProgram.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Hamming 00000000
+
+Symbol: Hamming
+   Definitions
+      At line 1 in file FirstProgram.s
+   Uses
+      None
+Comment: Hamming unused
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file FirstProgram.s
+   Uses
+      At line 3 in file FirstProgram.s
+Comment: start used once
+stop 00000218
+
+Symbol: stop
+   Definitions
+      At line 188 in file FirstProgram.s
+   Uses
+      At line 188 in file FirstProgram.s
+Comment: stop used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+main 00000000
+
+Symbol: main
+   Definitions
+      At line 2 in file FirstProgram.s
+   Uses
+      None
+Comment: main unused
+1 symbol
+342 symbols in table
